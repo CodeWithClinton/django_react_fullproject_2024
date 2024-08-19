@@ -1,0 +1,105 @@
+.navbar {
+    background-color: #212529;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #343a40;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #ffffff !important;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .searchBarContainer {
+    max-width: 500px;
+    flex: 1;
+    margin: 0 1rem;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap */
+  }
+  
+  .actionButton {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 5px; /* Adjusted for better spacing */
+    transition: all 0.3s ease;
+  }
+  
+  .actionButton:hover {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+  }
+  
+  .createButton {
+    color: #ffffff !important;
+    background-color: #28a745 !important;
+    border: 1px solid #28a745 !important;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 5px; /* Adjusted for better spacing */
+    transition: all 0.3s ease;
+  }
+  
+  .createButton:hover {
+    background-color: #218838 !important;
+    border-color: #218838 !important;
+  }
+  
+  .logoutButton {
+    color: #ffffff !important;
+    background-color: #dc3545 !important;
+    border: 1px solid #dc3545 !important;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 5px; /* Adjusted for better spacing */
+    transition: all 0.3s ease;
+  }
+  
+  .logoutButton:hover {
+    background-color: #c82333 !important;
+    border-color: #c82333 !important;
+  }
+  
+  .greeting {
+    margin-right: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (max-width: 991.98px) {
+    .searchBarContainer {
+      order: 1;
+      margin: 0 auto 1rem;
+      width: 100%;
+    }
+    .actions {
+      order: 2;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    .greeting {
+      margin-bottom: 0.5rem;
+    }
+    .actionButton, .createButton, .logoutButton {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
