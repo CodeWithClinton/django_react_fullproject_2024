@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from .serializers import PostSerializer 
+from rest_framework.pagination import PageNumberPagination
 from .models import Post 
 from rest_framework.response import Response
 
@@ -9,5 +10,7 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def post_list_create(request):
     posts = Post.objects.all()
-    serializer = PostSerializer(posts, many=True)
-    return Response(serializer.data)
+    paginator = PageNumberPagination()
+    paginated_posts = paginator.paginate_queryset(posts, request)
+    serializer = PostSerializer(paginated_posts, many=True)
+    return paginator.get_paginated_response(serializer.data)

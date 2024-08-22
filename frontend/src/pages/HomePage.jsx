@@ -9,16 +9,22 @@ import api from '../api'
 
 const HomePage = () => {
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+
+
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
   useEffect(function(){
   setLoading(true)
-  api.get("posts/")
+  api.get(`posts/?page=${currentPage}`)
   .then(res => {
-    console.log(res.data)
-    setPosts(res.data)
+    console.log(res.data.results)
+    setPosts(res.data.results)
+    setTotalPages(Math.ceil(res.data.count / 3))
+    console.log(Math.ceil(res.data.count / 3))
     setLoading(false)
     setError("")
   })
@@ -27,7 +33,7 @@ const HomePage = () => {
     setLoading(false)
     setError(err.message)
   })
-  }, [])
+  }, [currentPage])
 
   
   return (
@@ -36,7 +42,7 @@ const HomePage = () => {
     {error && <Error error={error} />}
     {loading && <Spinner loading={loading}/> }
    {loading || error !== "" ||  <CardContainer posts={posts}/> }
-    {error !== "" || <Pagination />}
+    {error !== "" || <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} />}
     </>
   )
 }
